@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4584b6f7-c9cf-404d-832e-5505d40be401" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="firstFlow" doc:id="d37bdcaa-a4d3-4498-b737-01865d3880e9" >
+		<http:listener doc:name="Listener" doc:id="919beb4c-9ac3-4abe-b199-62999a92d0c3" config-ref="HTTP_Listener_config" path="/first"/>
+		<logger level="INFO" doc:name="Logger" doc:id="86aad339-b8cd-4e17-a290-07665707858a" message='""my flow has been invoked ""'/>
+	</flow>
+</mule>
