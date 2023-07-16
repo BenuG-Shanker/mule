@@ -1,0 +1,10 @@
+In, first named folder, we have tried to implement the some basic integration ways by using anypoint studio's modules and there expressions and functions such as 
+  > Core > Logger
+  > Http > Listener
+We have firstly, dragged the listener form the mule palett and drop it down on the canvas, and do the same process with the logger one.
+Have, provided and message in the looger and logger is used only for providing the invoking message when listener got invoked every time.
+Then, in listener we have set the path as '/first', and done some configuration by editing the port to '8081' and testing the connection and then hit ok.
+After, saving the work we right click the mouse on the canvas and select the run option from there.
+And, Studio had started running the application and then automatically get switched to mule runtime environment and environment will deploye the API using open JDK platform.
+for invoking the mule project using external rest based api for testing the project implementation; we have to proide the URL as http://localhost/8081/first, and then hit send button, and in studio we get our message which had invoked by using looger from core module.
+Lastly, our API is ready and working excellant.
