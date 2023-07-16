@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="379c0d9e-95ff-4dce-b177-cf832ea5cc8f" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="secondFlow" doc:id="b92c2414-e7b6-45d7-ae99-4333ca129722" >
+		<http:listener doc:name="Listener" doc:id="30e103d9-cace-4a6e-9d89-1cef2a3e803b" config-ref="HTTP_Listener_config" path="/second"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ec042a1e-ec63-4e1c-b804-239d6e2777ca" message='""my flow has been invoked""'/>
+		<set-variable value="10" doc:name="Set Variable" doc:id="937bfd51-0c77-4bc1-8c26-117225fdf374" variableName="var1"/>
+		<logger level="INFO" doc:name="Logger" doc:id="bfd86f8b-8d9e-4986-a5ce-8c024fd0f59a" message='""my second flow has been invoked""'/>
+	</flow>
+</mule>
