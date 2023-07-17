@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="927960ca-171c-4986-8d9f-5c0330f612fe" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="78ad8ccf-9224-4493-b6a3-2aa050fd5c95" >
+		<http:request-connection host="dummy.restapiexample.com" protocol="HTTPS"/>
+	</http:request-config>
+	<flow name="fourthFlow" doc:id="052fe939-8bd5-449d-90f8-7cc101069859" >
+		<http:listener doc:name="Listener" doc:id="4cffcba4-14de-459e-b878-cb4acdfdb1ef" config-ref="HTTP_Listener_config" path="/fourth"/>
+		<http:request method="GET" doc:name="callRequest" doc:id="e473911b-c049-404c-82a3-45c489bcbd8f" config-ref="HTTP_Request_configuration" path="/api/v1/employees"/>
+	</flow>
+</mule>
