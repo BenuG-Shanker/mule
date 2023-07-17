@@ -1,0 +1,15 @@
+In, third named mule application project, we have used below mule modeuls and there functions,
+  > Core > flow
+  > HTTP > Listener
+  > Core > Logger
+  > Code > Set Payload
+We have used flow, listner, logger method twice, one for get method and another for post method, and set payload method have been used once in get method only.
+For starting the project, creat the new mule project just by opting new mule project just by right clicking over the mule palette.
+For initializing the Get Method, Then drag the flow function from the core module, and rename it as "thirdgetflow", 
+and in that flow add listener function from the http module, and rename it as "GET_listner" set the http configuration just by changing the port to 8081 and testing the connection and then clicking ok, and also providing the path for it as "/third"; go to the advanced section of the listner function and change the allowed method to as "GET" only.
+then, add set payload function from the core module, for setting the payload and invoking it from the get method, and give the message the fx tab as "["message" : "helloworld"]"; then click over the fx for removing it.
+For initializing the Post Method, copy the get flow function on to the canvas and rename to post from get and remove the set payload method from this flow and save the work and 
+Just right click onto the canvas, and opt for run option indeed.
+Go, to the external rest api invoking utility, choose the mothod as Get and give the URL as "http://localhost/8081/third", and after hitting send button, we will see 200 OK status, and the payload message, and
+after that, choose the method as Post and give the URL as "http://localhost/8081/third", and after hitting send button, we will see 200 OK status.
+From the above step, we get that our mule project is working fine and invoking of the api and the payload after invoking from the external rest based api utility is working fine.
