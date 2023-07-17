@@ -5,3 +5,4 @@ In this scheduler is used to schedule the triggering the invoking of the event a
 So, drop the scheduler function from the core module, and update the frequency as 10, and time unit as seconds.
 After, above step drop the invoking message function or methods known as logger function from the Core module, and update the message as ""my scheduler logger had been invoked"".
 Since, we had not given any host and end point or path for this project, there is no need for executing the rest based api, utility software. So run the mule based project as it is and have watch at a console after every given number of the seconds as per the given frequency.
+Note : read this => https://docs.mulesoft.com/mule-runtime/4.4/scheduler-concept
