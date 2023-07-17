@@ -2,7 +2,7 @@ In, fourth named mule application, we have used below modules and there inbuilt 
    > HTTP > Listner
    > HTTP > Request
 We have, make new mule project by default trick, and in this mule application we have tried to invoke the application by using rest based external api which is also a rest based
-before the implementation serach of dummy rest sampe api, where we get the employees rest link as "https://dummy.restapiexample.com/api/v1/employees", and going to insert in the requset configuration and other labels.
+before the implementation serach of dummy rest sampe api, where we get the employees rest link as "https://dummy.restapiexample.com/api/v1/employees" from => https://dummy.restapiexample.com/, and going to insert in the requset configuration and other labels.
 listner function of http module had been dropped on the canvas, and port of the http listener configuration had been updated as 8081 and the path has been written as "/fourth".
 and the process will be passed to the request functoin to http module, where http request configuration had been updated as updating the connection host as "dummy.restapiexample.com" and connection protocol as "HTTPS"
 and after clicking the ok button, then update request function path label end point as "/api/v1/employees".
