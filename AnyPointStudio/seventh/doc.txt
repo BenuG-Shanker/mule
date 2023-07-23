@@ -1,0 +1,19 @@
+In seventh named, mulesoft application integration, we have used below modules and there components i.e.,
+   > HTTP > Listener
+   > Core > Logger 
+   > Core > Set Variable 
+   > Core > Flow Reference 
+   > Core > Sub Flow
+   > Core > Flow
+At first, we have created the main flow, by dragging and dropping the flow method from the core module on the canvas.
+and, at event source of the flow, we have dropped http listener for making our api to get invoked by the external client using http, path and port; after this we have updated the details, by updating the path as "/seventh" and http configuration port as "8081" and clicking testing the connection and then ok.
+After setting up the path and port, we have invoke the process by dropping logger method from the core for printing the message as "my main flow had got invoked", then setting the variable by set variable method from the core module, updating the name as "var1" and value as "10",
+also, we have to create three types of flow, main flow, private flow and sub flow, for connecting private and sub flow, we needed flow reference method also from the core module, then we have dropped one logger method also, by updating message column as in data weave form "#[vars.var1]".
+for creating the private flow, dropp the flow method from the core module, and update the name as "seventhprivateflow"; and in event process part of the flow, add the logger method and update the message as "my private flow had been invoked", then drop the setvariable method from core module and update name as "var1" and value as"20".
+then create the subflow, drag and drop the subflow, method from the core module over the canvas and upate the name as "seventhsub_flow" and in event process part add logger and update the message as "my subflow had been invoked" and drop setvariable method and update the name as "var1" and value as "30".
+for invoking the private flow, go to flow reference in main flow, and in flow name select private flow, and save the whole implementation, and run the process by right clicking on the canvas and selecting the run option from there.
+Then, go to the external rest based client and write the URL as "http://localhost:8081/seventh and then hit send button.
+After the run process, we will get our logger messages with updated var1 value in console and 200 OK status in external rest based utility.
+for invoking the sub flow, go to flow reference in main flow, and in flow name select sub flow, and save the whole implementation, and run the process by right clicking on the canvas and selecting the stop and then run option from there.
+Then, go to the external rest based client and hit send button with same URL.
+After the run process, we will get our logger messages with updated var1 value in console and 200 OK status in external rest based utility.
