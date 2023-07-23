@@ -1,0 +1,14 @@
+In Eighth named, mulesoft application we have used below, modules and components i.e.,
+   > Core > Logger
+   > HTTP > Listener
+We have created the flow and renamed it as "eighthpublishflow", and drop the listener method from the http module, 
+and update the path as "/eighth" and update the http configuration port as "8081", and test the connection and then click ok button.
+Then, we have dropped logger method from the core module, and in message we have clicked on the fx button and write "payload".
+Now, we reach out to the external rest based utility software and inplace of GET opt for POST and update the URL as "http://localhost:8081/eighth" and
+opt body option and then opt raw and in below box write as given below i.e.,
+{
+  "name":"Benu",
+  "email":"benugopal786@gmail.com"
+}
+and then hit send button, after that we will get 200 ok status from our utility software and logger payload given from our utility side will be available in console.
+This, makes our application to work successfully.
