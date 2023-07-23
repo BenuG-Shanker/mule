@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d91dc0ad-7d90-4738-bd37-43c090f55f1d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<vm:config name="VM_Config" doc:name="VM Config" doc:id="28d52371-c13d-4ccb-99f0-492bae267c99" >
+		<vm:queues >
+			<vm:queue queueName="CustomerQueue" />
+		</vm:queues>
+	</vm:config>
+	<flow name="ninthpublishFlow" doc:id="a40d1a06-02a4-43df-855f-5eda3006dbca" >
+		<http:listener doc:name="Listener" doc:id="75d4e333-b2f5-4ebc-a3d5-ff6a60938ce8" config-ref="HTTP_Listener_config" path="/ninth"/>
+		<logger level="INFO" doc:name="Logger" doc:id="fc35cd42-d9b1-4c90-b0f5-373d4e11160d" message='""my before publish logger had invoked""'/>
+		<vm:publish queueName="CustomerQueue" doc:name="Publish" doc:id="3f7f2758-377c-47a2-b1e3-99b72f0df37f" config-ref="VM_Config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f643f591-53de-4856-9134-c39a86fd5c26" message='""my after publish logger had been invoked""'/>
+	</flow>
+	<flow name="ninthsubscriberFlow" doc:id="f5979130-a797-4405-98e5-bf6abc87e5d3" >
+		<vm:listener queueName="CustomerQueue" doc:name="Listener" doc:id="fefd0724-5166-4e9c-844b-5faf94535818" config-ref="VM_Config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="dfe3e59a-c726-4490-8f43-b38ccee10a3c" message="#[payload]"/>
+	</flow>
+</mule>
