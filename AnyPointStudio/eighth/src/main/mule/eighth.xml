@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0168b085-3227-440e-a1c6-68d1c782e653" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="eighthpublishFlow" doc:id="34888fd5-3511-4a01-b0f8-2ce27fd33e1b" >
+		<http:listener doc:name="Listener" doc:id="d8c6d700-bedc-4927-8120-6af04faa6eab" config-ref="HTTP_Listener_config" path="/eighth"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6d17cf84-3223-423b-94c3-78f6b4478b4a" message="#[payload]"/>
+	</flow>
+</mule>
