@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f9ec7fae-7405-45d0-8546-b6c60b933e31" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="seventhmainFlow" doc:id="e1223f76-d671-4664-a63d-b8fa32f99a17" >
+		<http:listener doc:name="Listener" doc:id="795bc93f-ee7a-4016-8023-2870e04c8108" config-ref="HTTP_Listener_config" path="/seventh" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="mainLogger" doc:id="61f15bef-ba84-4e9c-831c-8e447c59f887" message='""my main flow had got invoked""'/>
+		<set-variable value="10" doc:name="Set Variable" doc:id="1b1ee1e6-99aa-4c28-b21d-83225fec8fee" variableName="var1"/>
+		<flow-ref doc:name="Flow Reference" doc:id="50d832ea-68a3-4803-a147-0ea115453712" name="seventhSub_Flow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="0e4ebbde-e49a-4bac-82d2-2aee667441f6" message="#[vars.mainvar]"/>
+	</flow>
+	<sub-flow name="seventhSub_Flow" doc:id="da0fe682-cbad-462a-93af-0c3577179535" >
+		<logger level="INFO" doc:name="Logger" doc:id="6e7faf92-64fc-4775-85ff-e8dd7e788993" message='""My subflow had been invoked""'/>
+		<set-variable value="30" doc:name="Set Variable" doc:id="df0c1455-2e37-452a-a4aa-d56e5fcefea2" variableName="var1"/>
+	</sub-flow>
+	<flow name="seventhprivateFlow" doc:id="6bb0c904-a66b-48f7-85eb-3b2f9411c4ec" >
+		<logger level="INFO" doc:name="Logger" doc:id="fccd5755-40bf-4db7-ac44-f79a3ebefcb0" message='""my private flow had been invoked""'/>
+		<set-variable value="20" doc:name="Set Variable" doc:id="0a9d409c-7843-4ef9-adc7-8ddc78d8923b" variableName="var1" />
+	</flow>
+</mule>
