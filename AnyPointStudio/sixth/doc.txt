@@ -1,0 +1,23 @@
+In, sixth named mule application, we have used below, modules nad there related functions or methods i.e., 
+   > Core > Set Variable
+   > Core > Transform Message
+   > Core > Logger
+   > HTTP > Listener
+   > Web Service Consumer > Consume
+Primarily, we have added the new module called as web service consumer module, just by clicking add modules option in mule palette and selecting the web service consumer module and draging that from there to side portion and droping there, by doing this we had added the new module.
+This module is sincerely used for helping the trigerring or invoking of any soap based web services by the help of external rest based utility software by initializing the listener as a source.
+So, after that, drag and drop the litener from the http module to the canvas and update the http configuration just by uploading the port as 8081 and then testing the connection and lastly, click successful and given the path or the end point in the listener as "/sixth".
+And, go to the given url "https://www.soapui.org/docs/soap-and-wsdl/working-with-wsdls/" and populate the below fields as given.
+Then, in the process portion of the flow, drag and drop consume method from the web service consumer module, and update the web service consumer configuration as connector configuratoin by updating the wsdl location as "http://www.dneonline.com/calculator.asmx?wsdl", Service as "Calculator", Port as "CalculatorSoap", Address as "http://www.dneonline.com/calculator.asmx" and then click OK button.
+After that, update the general operation as "Add", only after updating the connector configuration.
+Since, our soap based open web service is a calculator and we have to perform the addition, so for that we need two integer variables for this follow below lines.
+drag and drop the set variable function from core module, and update the name of first function as var1 with value as 10 and another as var2 with values as 15.
+Now, important step is to transform the message, and in mule tranform means to map the input with the output, for having the flow, for this drag and drop the transform message to the canvas and click on the var2 and make it drag to the intB and click on the var1 and make it drag to the intA, then automatically mapping will be done; and in same time code for the work in data weave language had been written over there.
+go to the external rest based utility software and provide URL as "http://localhost:8081/sixth" and then hit send button, after that we will see that the application had been successfully invoked the open soap based web service, by populating 200 OK status with added answer.
+If we want to provide the values not in hard coded format but other than that, for doing this, we have to follow below
+Go to the studio, and update the value in set variables functions in first one as "attributes.queryParams.Number1" and in other one as "attributes.queryParams.Number2", note : click om the fx box for making the written code in data weave format.
+Also, for getting the result in consol, drag and drop the logger after consume method in the canvas and update message by clicking on the fx button as "payload.body.AddResponse.AddResult".
+save the work, and run the project.
+go to the external rest based utility softeware and update the URL as "http://localhost:8081/sixth?Number1=10&Number2=25" and then hit send button,
+After this we will see that, 200 OK Status will appear and addition result will come in console and in utility client both at same interval.
+Means out mule application is working good.
