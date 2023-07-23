@@ -1,0 +1,30 @@
+In ninth named, mulesoft integrated application we have various different types of modules and components which are given below i.e.,
+  > HTTP > Listener
+  > Core > Logger
+  > Core > flow
+  > VM > Publish
+  > VM > Listener
+In, this we have set the outlook for invoking the entire application by our external rest based utility, just by adding the http listener in an event source column of a flow.
+in listener, we have updated the path as "/ninth" and updated the port as "8081" in a http configuration.
+After, above logger method from the core module had been appended, after listener and message is updated as "my before publish logger had invoked".
+Then, for experiencing the asynchronous methodology of the virtual machine or VM module, we had used publish component after adding the VM module from Add Modules button and dropping publish method after the logger component.
+After, dropping the publish component, update the Queue configuration, by opting the Queues in general column as "Edit inline" and dialog box will appear where Queue Name will get updated as "CustomerQueue" and Queue Type as default one, then click finish and ok.
+then, drop the logger method and update the message column as "my after publish logger had been invoked".
+Now, create the new flow and in event source part add Listener component from the VM module where Queue configuration had come updated automatically, and click on the refresh button in Queue name box where the entry will populated as CustomerQueue.
+After that drop the logger method from the core module, and update the message as by clicking on the fx button and writing "payload" in the given box.
+Now, run mulesoft application, and introduce the details in utility as changing the GET from POST, and updating URL as "http://localhost:8081/ninth".
+and go to body, then click raw and in below box write the below content i.e.,
+{
+  "name":"Benu",
+  "email":"benugopal786@gmail.com"
+}
+and hit send button, 
+After that we will see the payload message and 200 ok status in utility software and the payload message will appear in studio console also.
+Finally, we have interoduced the implementation of the VM module and its components concept in the studio very well, and run the application succesfully.'
+
+In, this we follow the concept of Publish Subscribe Pattern also called as VM Connector in mulesoft, and this is used for publishing and listening the messages through virtual machine connector majorly in the similar order.
+this concept follows Queue which is termed as series of messages and are of two types
+    1. Transient Queue -> they are volatile and non reliable in cateagory, in terms of data or messages in the Queue.
+    2. Persistent Queue -> they are non volatile and reliable in category, in terms of data or messages in the Queue.
+In, this Asychronously way of publishing and sbscribing the messages method, publish componenet and listener componenet will work in a uncontrol manner while subscribe will work in hand in hand or parallel manner in the whole process.
+Note : https://docs.mulesoft.com/vm-connector/2.0/
