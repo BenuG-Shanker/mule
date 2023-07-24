@@ -1,0 +1,1 @@
+Note : https://docs.mulesoft.com/mule-runtime/4.2/scatter-gather-concept
