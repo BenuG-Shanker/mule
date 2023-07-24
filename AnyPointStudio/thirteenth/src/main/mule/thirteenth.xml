@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="46f495b2-38e0-43c4-be11-7e5940538ef3" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="thirteenthFlow" doc:id="73068403-698f-4b28-8b70-bead4cd625b2" >
+		<http:listener doc:name="Listener" doc:id="6c8a6f18-2782-44e2-9b45-5b2d6679431b" config-ref="HTTP_Listener_config" path="/thirteenth"/>
+		<set-variable value="#[attributes.queryParams.country]" doc:name="Set Variable" doc:id="a2769cc5-4127-412d-b5f7-9fd5643c8f1a" variableName="countryName"/>
+		<choice doc:name="Choice" doc:id="5a4da2e8-71b8-4df4-837d-6917d38a8213" >
+			<when expression='#[vars.countryName == "UnitedStates"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="42632c7b-f2f2-434c-ac58-3a668202e056" message='""my united states choice router logger had invoked""'/>
+			</when>
+			<when expression='#[vars.countryName == "India"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="bdfcda0b-d7b9-41cd-917c-d5ee2cae9da4" message='""my India choice router logger had invoked""'/>
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="2ae314ba-9053-4f4a-81ab-4ed956814b17" message='""my default choice router logger had invoked""'/>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>
