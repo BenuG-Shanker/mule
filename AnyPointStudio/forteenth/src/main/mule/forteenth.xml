@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c56f4cc6-fadb-437d-ba39-52bed055e36d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="forteenthscattergatherFlow" doc:id="e43e8b2b-942e-43e1-bfc8-fdaacdb03846" >
+		<http:listener doc:name="Listener" doc:id="1eb4f54c-7b6d-479c-b9ec-48df072e8b69" config-ref="HTTP_Listener_config" path="/forteenth" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Logger" doc:id="76e7ae25-9f34-41ef-969e-cc0ad52e189f" message='""my before scatter and gather had invoked""'/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="8a0b2e59-83dd-48fb-8066-1675a47963aa" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="ad84e787-7857-40d7-8e26-9627844fdeca" message='""my looger1 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="b6f1bd86-4570-4a2a-89bd-5ce7fa2d11a5" message='""my looger1.1 had invoked""'/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="149ad6d7-9958-4edb-bb52-883352e693d6" message='""my looger2 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="08f54a22-2aee-46e5-a5c9-738eb8fdf5d8" message='""my looger2.1 had invoked""'/>
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="Logger" doc:id="1e3135ad-bb94-4d5e-834b-d435e6696b1d" message='""my after scatter and gather had invoked""'/>
+	</flow>
+</mule>
