@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="6ce35c52-0050-4151-89ec-a573d36daa51" >
+		<file:connection workingDir="C:\demo\input" />
+	</file:config>
+	<file:config name="File_Config1" doc:name="File Config" doc:id="9d1fab32-408d-4b11-a007-2991704e3aaf" >
+		<file:connection workingDir="C:\demo\output" />
+	</file:config>
+	<flow name="twelvthfileprocessingFlow" doc:id="d266ec38-4be7-48a2-9771-3d6051695726" >
+		<file:listener doc:name="On New or Updated File" doc:id="562b5784-ca32-4647-a947-94135a238d95" config-ref="File_Config" directory="C:\demo\input" autoDelete="true" moveToDirectory="C:\demo\output">
+			<scheduling-strategy >
+				<fixed-frequency frequency="5"/>
+			</scheduling-strategy>
+		</file:listener>
+		<ee:transform doc:name="Transform Message" doc:id="615e8e04-a44d-4024-a0ba-8fcc4a1abedc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="6202810b-fabf-4f58-88be-ef47b19f398f" message='""my after for each logger had invoked""'/>
+		<foreach doc:name="For Each" doc:id="7a6383b9-71ce-45ff-bed7-d17ff291442f" >
+			<logger level="INFO" doc:name="Logger" doc:id="4d34d676-8be7-4c7f-bd97-124384f2e34a" message='#[payload]' />
+			<set-variable value="#[payload.policyID]" doc:name="Set Variable" doc:id="130a87bd-4087-4661-8fcd-4a492bb94bd4" variableName="Insurancefilename"/>
+			<ee:transform doc:name="Transform Message" doc:id="9df3d0e5-5d20-412b-bd76-bf7b39ac093a" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/csv
+---
+payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<file:write doc:name="Write" doc:id="acc345e2-f3f8-4529-b892-fd2d915f4bd4" config-ref="File_Config1" path='#[vars.Insurancefilename ++ ".csv"]'/>
+		</foreach>
+		<logger level="INFO" doc:name="Logger" doc:id="14bfeddd-182c-48c0-a021-9103d76a503a" message='""my after for each logger had invoked""'/>
+	</flow>
+</mule>
