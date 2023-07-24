@@ -1,0 +1,20 @@
+In thirteenth names, mulesoft application integration file, we have used below given core and there related componenets i.e.,
+  > HTTP > Listener
+  > Core > Set Variable
+  > Core > Choice
+  > Core > Logger
+We have, tried to practice the choice router concept through anypoint studio, where we first drag and drop the litener component from the core module
+and update the http configuration just by updating providing the port as "8081" and path as "/thirteenth".
+Then, setvaribale method had been dropped from core module, where name is updated as "countryName" and value as "attributes.queryParams.country" after fx button had to be clicked.
+after above step choice component had to be dropped from core module, where there are two boxes of one when and one default.
+we have, overite the when box by clicking over when and updating expression as "vars.countryName == "UnitedStates"" and drop the logger componenet from core module and updating the message as """my united states choice router logger had invoked""".
+for introducing another path, in choice module, drop the logger component on the orange line of the choice where automatically new path will get appear, where we get another when and it expression will get updated as "vars.countryName == "India"" and drop the logger componenet from core module and updating the message as """my India choice router logger had invoked""".
+then our default path will left for changes in that we will drop logger component, and its message will updated as """my default choice router logger had invoked""".
+Now, save the work and start running the application on the studio.
+In, external rest based utility software, provide URL as "http://localhost:8081/thirteenth" and set to GET option.
+for accessing the first path of the choice router append the URL as "http://localhost:8081/thirteenth?country=UnitedStates", after clicking the send button we will get 200 ok status in utility and some path related logger messages in console of studio, and
+for accessing the second path of the choice router append the URL as "http://localhost:8081/thirteenth?country=India", after clicking the send button we will get 200 ok status in utility and some path related logger messages in console of studio, and
+for accessing the default path of the choice router append the URL by providing any country value but not India and not UnitedStates as "http://localhost:8081/thirteenth?country=ABC", after clicking the send button we will get 200 ok status in utility and some path related logger messages in console of studio.
+From the implementation of the different paths by the help of choice routers we have applied the choice router concept succesfully.
+
+Note : https://docs.mulesoft.com/mule-runtime/4.2/choice-router-concept
