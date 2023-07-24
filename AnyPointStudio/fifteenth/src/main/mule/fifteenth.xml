@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="14c0a58a-2f34-4158-88c7-dbac3e1282c8" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="fifteenthFlow" doc:id="15f0f533-a36b-4dbf-8c0a-85fa127d7a24" >
+		<http:listener doc:name="Listener" doc:id="deda2d8a-3376-47f7-a773-558a80452867" config-ref="HTTP_Listener_config" path="/fifteenth"/>
+		<set-payload value='{"message":"payload before scatter gather"}' doc:name="Set Payload" doc:id="bdf41591-f82f-4994-980d-2e0c98e953d1" />
+		<logger level="INFO" doc:name="Logger" doc:id="fe0992c7-cbaa-40f1-b3f7-f119713f9bd1" message='""my before scatter and gather had invoked""'/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="cb87213c-3abc-4666-8ad0-6fc2de17d8ed" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="67697474-1a6a-4004-9d0c-b4d80acc3be8" message='""my looger1 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="2f6b30b0-f902-498d-a1b6-4858d781b529" message='""my looger1.1 had invoked""'/>
+				<set-payload value='{"message":"payload inside scatter gather flow 1"}' doc:name="Set Payload" doc:id="5c3f8fde-2f63-4e5f-a1b5-27e496412519" />
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="70b8d0f5-4ca0-4f5d-9e72-afb19fcbe280" message='""my looger2 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="3d2b180e-9bbb-4f57-87d1-f054f923d193" message='""my looger2.1 had invoked""'/>
+				<set-payload value='{"message":"payload inside scatter gather flow 2"}' doc:name="Set Payload" doc:id="be9c6a0a-39e2-4cc7-bc8b-cb74cb23b650" />
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="Logger" doc:id="3c5d27c0-4d6b-4da5-92aa-75a0513f4353" message='""my after scatter and gather had invoked""'/>
+	</flow>
+</mule>
