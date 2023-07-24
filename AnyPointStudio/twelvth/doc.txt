@@ -1,0 +1,34 @@
+In twelvth named, mulesoft integration application, we have used modules and related components i.e.,
+   > File > On New or Updated File
+   > Core > Transform Message
+   > Core > Logger
+   > Core > For Each
+   > Core > Set Variable
+   > File > Write
+In, this mulesoft api, we have initiated the the file in a csv format in input folder then transform the file in java, then split the file detail row wise into seperate csv's file by transforming them into csv and writing them into output folder.
+Now, add File module by clicking on the Add Module tab and drag it into the main mule pallete.
+After that drop the on new or updated file method from the file module on a canvas, and update the file connector configuration, as by replacing working directory label as "C:\demo\input".
+and providing the similar path in directory tab in general box,
+and adjust the gap in miliseconds for reading the input folder by 5 and making the auto delete as true and provide the output path in move to directory label as "C:\demo\output".
+After that, add the transform message component from the core module and update the output payload box as below : 
+        %dw 2.0
+        output application/java
+        ---
+        payload
+Than add the Logger component from the core module and update the message label as "my after for each logger had invoked".
+Now, add the for each loop for accessing the file entry one by one iteratively, from the core module, and 
+in for each method, add logger component from the core module, and update the message as "payload" just by clicking fx button, 
+and append set variable method from the core component, just by storing the split files from the main file in the input folder by name expression provided in the set variable method as updating the name as "Insurancefilename" and value as "payload.policyID" after clicking on to the fx button, by this it will store the aplitted files in an output folder as having the file name as per the policyID number in each row.
+After, that append Transform message, and update the output payload box as below : 
+        %dw 2.0
+        output application/csv
+        ---
+        payload
+Than add the write method from the file module and update the file connector configuration as by replacing working directory label as "C:\demo\output", and general path as "vars.Insurancefilename ++ ".csv".
+After, finalising the for each method section, append logger component from the core module after the for each method from core module, just by updating the message label as "my after for each logger had invoked".
+Now, from this link "https://support.spatialkey.com/spatialkey-sample-csv-data/" download the dataset from the first link which is an insurance dataset, and edit the file by having only six rows in the downloaded csv insurance file and changing the policyID column as 1001 in row2column1, 1002 in row3column1, 1003 in row4column1, 1004 in row5column1, 1005 in row6column1 and save the editted csv file.
+Then, place the updated csv file in iput folder.
+And, in studio start running the ingration of the application, and after given time interval we will have five csv files in output folder and no file in input folder.
+from the above step, out api is performing well and the integration had been succesfully implemented.
+  
+Note : https://docs.mulesoft.com/mule-runtime/4.2/for-each-scope-concept
