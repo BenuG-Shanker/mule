@@ -1,1 +1,13 @@
+In eleventh named, mulesoft application, we have used below modules and related components i.e.,
+   > Core > Logger
+   > File > On New or Updated File
+In this we have implement the new module which file module first by adding it into the main pallete and dragging and droping the on new or updated file componenet on to the canvas as a event source.
+Then, we have initialised the logger method from core module in an event process part of the flow.
+and change the name eof the flow as "eleventhfileprocessingflow".
+create the floder the demo in C drive and create two new folders as input and output in the demo folder as well and provide relevant path in the VM module On New or Updated File component.
+In On New or Updated File component, we have updated the file connector configuration by providing input folder in the working direcotry as "C:\demo\input", and test the connection and click ok.
+After, in general give the same folder path in directory label as "C:\demo\input", and below that provide the frequency as "5" and make Auto Delete as "True",
+and, make the entry in the move to directory as "C:\demo\output".
+Add, the logger method from the core module, and in message label click on the fx button and write payload.
+Then, run the application and after every 5 miliseconds, we will se that when we add some file into the input folder will automatically transferred to output folder and the matter in the file will be clearly visible in the console in studio.
 Note : https://docs.mulesoft.com/file-connector/1.5/
