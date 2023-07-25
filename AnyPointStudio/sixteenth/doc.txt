@@ -1,2 +1,37 @@
+In Sixteenth named, mulesoft integrated application implemented in anypoint studio had used given below modules and there related components i.e.,
+    > File > On New or Updated File
+    > Core > Logger
+    > Core > Transform Message
+    > Core > BtachJob
+    > Core > Set Variable
+    > File > Write
+    > Core > BatchStep
+We have tried implement the concept of batch processing methodology used in ipass application integration platform we are using as mulesoft anypoint studio and application or web.
+Batch Processing used to process the various iterations, parallely by a specific btach step and for following the same processes in different machines or processors we used n number of batch steps.
+batch does not uses a serial way of doing the processing of the threads as for each concept guides, they used to process 100 threads parallely in a one go for decreasing the time taken and to work more effectively.
+Moreover, batch process allows us to process the records or messages in batches by default the batch size is of 100 only and can be changed.
+this concept, follows ETL i.e., Entracting, Transferring, Loading manner.
+In, this we have add File module from the mule palette to itself, and drag and drop the On New or Updated File component to the canvas.
+by this, file connector configuration had been updated by changing some field labels working directory as "C:\demo\input" after testing the connection click ok.
+in directory field provide the above for the input folder as "C:\demo\input", and make the auto delete from the input folder after the accessing the file from the input folder as "True", and provide the archive folder path in move to folder field as "C:\demo\output".
+After, that provide the logger for getting the payload information of the file which is going to get storred in input folder.
+for splitting the feeded file in an input folder into the total number of rows to similar number of same type of one row files, we have to transform the feeded file data into java type which can be accessed by the write component of the file module, and have to update output payload as 
+                %dw 2.0
+                output application/java
+                ---
+                payload
+Save the progress, and drop the batch job method from the core module in which we are having batchsteps.
+in the batchstep, add the set vriable method from the core module, and update the name field as "outputfilename" and value as "payload.policyID" then click onto the fx button.
+After that convert the data or transform the file into csv, by dropping the transform component from the core module, and updating the output payload as 
+                %dw 2.0
+                output application/java
+                ---
+                payload
+Also, provide the logger by droping just after the trnasform method, and update the message fiels as "my batchstep1 logger had invoked".
+Then for splitting the feeded folder into the total number of one row folder similar to the total number of rows in the main file, we have to drop the write component from the core module, and update the file connector configuration as by updating working directory as "C:\demo\output" select ok after testing the connection.
+and update path field as "vars.outputfilename ++ ".csv"" for performing the above splitting job for the first processor.
+If the similar job is to be done for n number of processors then we append the batchstep component from the core module and the similar task will be done.
+At last whole process is to be get saved and runned, and the insurance file from the below given link need to downloaded and copied to the input folder and we will have that after some fraction of seconds there are that number of single rowed folders in output folder as the main file is having the number of rows in it.
+
 Data : https://support.spatialkey.com/spatialkey-sample-csv-data/ (insurance one)
 Note : https://docs.mulesoft.com/mule-runtime/4.2/batch-processing-concept
