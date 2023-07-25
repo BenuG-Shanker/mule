@@ -1,0 +1,17 @@
+In forteenth named, mulesoft integration application we have used below mention modules and there related components i.e.,
+  > HTTP > Listener
+  > Core > Logger
+  > Core > Scatter Gather
+We have tried to understand the concept of scatter gather first by generating the flow of logger messages in studio.
+first we have plant the http listener for invoking the application from external rest api, by changing the http configuration port as "8081" and path as "forteenth".
+then logger had been dropped, and message is given as """my before scatter and gather had invoked""".
+After that scatter and gather component of core module dropped, scatter and gather also called as router event processor and used to route the payload through different flows, in this there must be atleast 2 flows or event processors are needed and the invokation of the flow will happen in parallel manner.
+Then flows are created, by default it comes with only single flow but for creating atleast 2 flows drag any component near the orange of scatter gather then black line appears and release the component.
+In the above similar fashion, we have dropped four logger components, and created two flows and in one flow we are having two loggers and there message label are changing as follows :
+flow one logger first message is updated as """my looger1 had invoked""" and second message is updated as """my looger1.1 had invoked""", and
+flow two logger first message is updated as """my looger2 had invoked""" and second message is updated as """my looger2.1 had invoked""", and
+Then, in final call we have also placed one logger after the finish of the scatter gather component and its messages had been updated as """my after scatter and gather had invoked""", and save the progress.
+Now, set GET and update URL as "http://locahost:8081/forteenth" in the external utility rest based software.
+and, After clicking send button, we will have 200 ok status in utility and logger messages in console, after hitting send button from the utility software, we will get to know the working of the invokation of the flows parallely, by getting different scatter and gather logger messages each time we hit the send button.
+
+Note : https://docs.mulesoft.com/mule-runtime/4.2/scatter-gather-concept
