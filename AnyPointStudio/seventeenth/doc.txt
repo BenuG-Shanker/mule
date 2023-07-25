@@ -1,2 +1,21 @@
+In Seventeenth name, mulesoft application integration, we have used various modules and there needed components i.e.,
+    > HTTP > Listener
+    > HTTP > Request
+    > Core > Logger
+We have to deploy the normal application to the cloud hub known as mulesoft anypoint platform.
+where, cloud app is a mulesoft ipass platform which is basically used for running the integrationsor api's, also used as the testing and production environment.
+and have sandbox environment for both deploying and testing.
+for this we have dropped the http listener component, and updated the listener configuration by updating the port as "8081", and path as "/seventeenth"
+Then request component is dropped from the http module, and its http request configuration file is updated, where Host field is updated as "dummy.restapiexample.com", and Protocol is chosen as "HTTPS", and then click ok; after that update the path field as "/api/v1/employees", and after changing all the needed fields we are viewing the full url below the configuration field.
+Then save the work and start the runn of the integration of the application implemented in studio.
+Then go to the external rest based api, and change the option to GET, and update the URL as "http://localhost:8081/seventeenth" and click send button we will see the payload from the rest based web service is visible in our utility and logger message in out studio's console.
+after succesfully executing the progress, go to the anypoint platform and create the new account, and then go to runtime manager and click sandbox at this time it will appear empty, 
+but go to the studio, and do the right click over the current project name in package explorer and opt for anypoint studio then deploy to cloud hub and then click on to the configure button and enter the created id passsword into it, and click on to the deploy button which will arrive by scrol down the page, and
+after that our project will get dployed to the cloud and have to wait for some minutes.
+Then go to the runtime manager in anypoint platform and click on to the applicatoin name copy the whole applicatoin url,
+then open the utility software and update the URL as	"https://seventeenth-h5jqog.5sc6y6-1.usa-e2.cloudhub.io/seventeenth" and hit send button.
+After some seconds we will get out same rest web service payload into the utility and logger messages into the console of the studio and the logger messages will also be visible in runtime manager then clicking on logs to view recent application loggs and the process will be visible in the stuio's console.
+By this we have succesfully deployed the application in the anypoint platform clous hub and invoked the rest web service by out external rest baed client as an utility software.
+
 Data : https://dummy.restapiexample.com/
-AnyPoint Studio : https://anypoint.mulesoft.com/
+AnyPoint Platform : https://anypoint.mulesoft.com/
