@@ -1,0 +1,2 @@
+Data : https://support.spatialkey.com/spatialkey-sample-csv-data/ (insurance one)
+Note : https://docs.mulesoft.com/mule-runtime/4.2/batch-processing-concept
