@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c7b3ca58-0660-468f-961d-185a4fdde4d3" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="a2db18f1-6e01-4270-b06a-db55f9614fa7" >
+		<http:request-connection protocol="HTTPS" host="dummy.restapiexample.com" />
+	</http:request-config>
+	<flow name="seventeenthFlow" doc:id="05d7ded5-0539-41b3-82b1-2fd690628fdd" >
+		<http:listener doc:name="Listener" doc:id="9a3486e4-c1af-42e7-ae0c-cf78ef42e5d7" config-ref="HTTP_Listener_config" path="/seventeenth" allowedMethods="GET"/>
+		<http:request method="GET" doc:name="Request" doc:id="41ec55f6-2861-4e55-a3ea-b7d8d8f05afb" config-ref="HTTP_Request_configuration" path="/api/v1/employees"/>
+		<logger level="INFO" doc:name="Logger" doc:id="73b0d77f-3f60-4b63-820f-7a32c60ec354" message='""my anypointplatform application had invoked""'/>
+	</flow>
+</mule>
