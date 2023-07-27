@@ -12,3 +12,5 @@ first logger message field had been updates as """my onerrorproperty inside erro
 Saving the implementation, and setting the GET option in external rest based utility sfotware, and providing the URL as "http://localhost:8081/eighteenth", and hit the send button.
 For getting the detail working of the on error propagate component set breakpoint on the raise error and debug the application in debugger perspectiveby hitting the send button in utility.
 After sucessfull progress we will get 200 ok status in utility and all three logger messages in console of the studio.
+
+On Error Propagate is used to perform exiting with failure, where error handling is applied within similar flow and we are having exception within our flow and exception handling within our flow itself.
