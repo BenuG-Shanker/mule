@@ -1,0 +1,16 @@
+In eighteenth named, studio application we have used needed modeuls and componenets which are given below i.e.,
+    > HTTP > Listener
+    > Core > Raise error
+    > Core > On Error Continue
+    > Core > Logger
+We have tried to implement the concept of error handler in anypoint studio perspective, by the help of On Error Continue.
+We have provide the endpoint for our application, using http listener, just by dragging and dropping the listener componenet on the canvas, and updating the path as "/eighteenth" and http connector configuration port as "8081".
+Then in event processor we have placed, raise error component, and update type field as "MULE:VALIDATION" and description as "validation error".
+And for showing the working of on error continue method, we have introduced the logger component from the core module and update the message as """my error handling flow had invoked""".
+Now, we have created the error and we have to handle it for handling purposes we ahve dropped the on error continue component in error handling part of the flow, and in the dropped component, we have also dropped two logger components, for getting the actual working of the flow in error handling within the flow.
+first logger message field had been updates as """my onerrorproperty inside errorhandling logger1 had invoked""", and seoncd logger message field had been updates as """my onerrorproperty inside errorhandling logger2 had invoked""".
+Saving the implementation, and setting the GET option in external rest based utility sfotware, and providing the URL as "http://localhost:8081/eighteenth", and hit the send button.
+For getting the detail working of the on error propagate component set breakpoint on the raise error and debug the application in debugger perspectiveby hitting the send button in utility.
+After sucessfull progress we will get 200 ok status in utility and all two error handling side logger messages only in console of the studio.
+
+On Error Continue is used to perform exiting with success, where error handling is applied within similar flow and we are having exception within our flow and exception handling within our flow itself.
