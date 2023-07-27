@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fb10289d-eef4-4578-8e21-33f6ad562a4a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="nineteenthFlow" doc:id="5e6a1f57-24fe-4c1d-97f2-4669bbdec42b" >
+		<http:listener doc:name="Listener" doc:id="bcd9f69d-844b-48fb-9f54-0a984ae8085c" path="/nineteenth" config-ref="HTTP_Listener_config"/>
+		<raise-error doc:name="Raise error" doc:id="857bcf48-2442-46de-beda-97a0b0a3d2de" type="MULE:VALIDATION" description="Validation error"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ad29f694-de53-41f6-9415-42783eda5926" message='""my raiseerror logger had invoked""'/>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="afcae3c0-2192-4a4a-b0a7-ab1ba63081b3" >
+				<logger level="INFO" doc:name="Logger" doc:id="3255afab-4fa5-4407-89a1-5a56bee1bce3" message='""my onerrorcontinue inside errorhandling logger1 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="b364c688-f742-49da-824c-c02010d1645b" message='""my onerrorcontinue inside errorhandling logger2 had invoked""'/>
+			</on-error-continue>
+		</error-handler>
+	</flow>
+</mule>
