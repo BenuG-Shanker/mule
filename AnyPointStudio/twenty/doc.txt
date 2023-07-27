@@ -1,0 +1,29 @@
+In twenty named, mule studio application, we have used module and related components which are given below i.e.,
+    > HTTP > Listener
+    > Database > Select
+    > Core > Transform Message
+We have to implement the select method of the database from our desktop studio app, for this,
+create a new file or a project file as "twenty" name, and drop the listener for connecting the studio application by the external rest utility software.
+after dropping the component, update the http listener configuration details by updating port as "8081" click ok button before testing the configuration connection, and the path as "/twenty".
+Then, drop the Select component, just by adding the Database module from the add modules and dropping the exact module for getting the related jars file, and drop the Select method on to the canvas just after listener, and update the database connector configuration by updating the connection as "MySQL Connection" option and in general tab click on configure and choose "Add Recomended libraries" and than click ok to download the zar file and implement the particular as JDBC Driver.
+Also, provide the Host as "localhost", Port as "3306", User as "root", your own password, and the given name of your database like "mule".
+Before the above step, download the "MySQL-installer-community-8.0.34.0" windows installer package from online into the system, and after downloading do the installation process and provide the password for your root for MySQL server which is a main priority.
+And, open MySQL workbench and create a schema named as "mule" and create a table named as "bankdetails", and do follow the below script for creating and adding rows into your table in the workbench i.e.,
+                CREATE TABLE TestTable(
+                	custid int,
+                	custname varchar(255),
+                	accountname varchar(255),
+                	password int,
+                	balance int
+                );
+                INSERT INTO TestTable (custid, custname, accountname, password, balance) 
+                VALUES ('1', 'benu', '123456', '1234', '0');
+                INSERT INTO TestTable (custid, custname, accountname, password, balance) 
+                VALUES ('2', 'gopal', '234567', '5678', '0');
+                INSERT INTO TestTable (custid, custname, accountname, password, balance) 
+                VALUES ('3', 'shanker', '345678', '9012', '0');
+Then in workbench click on to the yellow lighting type button for running the srcipt written to see the created table as a result.
+After, doing some job in workbench, then proceed to studio, and update the SQL Query Text as "SELECT * FROM mule.bankdetails;" and save the work of the studio and do click onto the run button after right clicking on the canvas.
+Now, move on to the external utility software, and sincerely opt for GET option, and update URL as " http://localhost:8081/twenty" and hit the send button.
+after some time we will see, 200 ok status in utility, our the data also in the utility.
+From, this we have succesfully invoked the MySQL server having the database created from the localhost.
