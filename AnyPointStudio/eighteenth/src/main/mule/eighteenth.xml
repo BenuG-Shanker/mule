@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="33281505-4b11-450b-9cbf-f285dbd80fca" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="eighteenthFlow" doc:id="b65d90be-1a50-4872-86dd-91a37d285296" >
+		<http:listener doc:name="Listener" doc:id="9d3e6673-decd-422c-bac5-88f4b0ccffea" config-ref="HTTP_Listener_config" path="/eighteenth"/>
+		<raise-error doc:name="Raise error" doc:id="d0cf79b1-51d3-4b99-8b92-2e3f30f009a0" type="MULE:VALIDATION" description="vaildation error"/>
+		<logger level="INFO" doc:name="Logger" doc:id="3ecd916a-3036-460b-b6a6-694bd79d67eb" message='""my error handling flow had invoked""'/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="796b0a6e-69f1-429d-9202-71c202eb80f6" >
+				<logger level="INFO" doc:name="Logger" doc:id="0ad648f0-9b96-490d-a327-6c89740c018d" message='""my onerrorproperty inside errorhandling logger1 had invoked""'/>
+				<logger level="INFO" doc:name="Logger" doc:id="539ad671-0000-4ccd-afd3-ec3f1ba25c0b" message='""my onerrorproperty inside errorhandling logger2 had invoked""'/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>
