@@ -1,0 +1,16 @@
+In twentytwo named, mulesoft anypoint studio, we have used below given modules and components i.e.,
+    > HTTP > Listener
+    > Core > Set Variable
+    > ObjectStore > Store
+We have applied the concept of storing and retrieiving the key and value pair in/from an object store using the studio and getting the application invoke by external rest based client.
+for this we have dropped the listner component on the canvas at event source part of the flow, and updated the http connector configuration port as "8081" and path as "twentytwostore".
+and in event process part of the flow we have draged and dropped set variable for key and value seperately within next to each other, and updated the fields of first set variable as name as "key" nad value as "attributes.queryParams.key"; updated the fields of second set variable as name as "value" nad value as "attributes.queryParams.value" and after click to fx button each time for making it data weave expression.
+for storring the key and value in an objectstore, store method is used and some changes regarding Key and value had been done as "vars.key" and "vars.value" and after click to fx button for making it data weave expression.
+and for updating the objectstore configuration details, leave as it is as a default, and only click ok button to proceed further.
+Then, create a second flow, and place the listener, leaving previous http connector configuration details as it is and path as "twentytworetrieve".
+copy the set variable method from previous flow whose named as key to the new flow, for retrieving the value which related to the given key by a client.
+Then, drop the Retrieve component from the ObjectStore module, and update key field as "vars.key" and change the field to expression mode, and if key value gets wrond the update default value as "this is my default value" and at last choose the preiously done objectstore configuration from the drop down list.
+save the project, and make it run in anypoint studio, with JVM and maven.
+for invoking the project, open the external client, and select GET option, and provide URL as "http://localhost:8081/twentytwostore?key=testkey&value=testvalue", and hit send then our key and value values get store in an objectstore component,
+after the above procedure, provide the new URL as "http://localhost:8081/twentytworetrieve?key=testkey", and click send button, some seconds after, we will get the value's value.
+by this we can assume that our project or an application is working fine.
