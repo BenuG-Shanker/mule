@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e946f3d7-58d6-46a8-8001-3d0a6aef0d87" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<os:object-store name="Object_store" doc:name="Object store" doc:id="63f7d056-77ce-43fa-9cfc-646e5f86c672" />
+	<flow name="twentytwoFlow" doc:id="24ec72df-e7f1-467b-a740-70e7838fcaf1" >
+		<http:listener doc:name="Listener" doc:id="75a03fdc-3bca-434f-9b6b-540f32278be9" config-ref="HTTP_Listener_config" path="/twentytwostore"/>
+		<set-variable value="#[attributes.queryParams.key]" doc:name="Set Variable" doc:id="9d7a43d8-0cda-4785-b83c-475f6af16cb2" variableName="key"/>
+		<set-variable value="#[attributes.queryParams.value]" doc:name="Set Variable" doc:id="afa12c4f-0a21-4b56-8728-20bba48b6291" variableName="value"/>
+		<os:store doc:name="Store" doc:id="6cbd6c14-a1fe-41fb-abce-7ba33a60c153" key="#[vars.key]" objectStore="Object_store">
+			<os:value ><![CDATA[#[vars.value]]]></os:value>
+		</os:store>
+	</flow>
+	<flow name="twentytwoFlow1" doc:id="09e04cdc-b1b9-4910-bf7f-ad7bf8bd9b43" >
+		<http:listener doc:name="Listener" doc:id="32af52cc-10c3-4804-8a0e-707b6530d6aa" config-ref="HTTP_Listener_config" path="/twentytworetrieve"/>
+		<set-variable value="#[attributes.queryParams.key]" doc:name="Set Variable" doc:id="66fc69e1-71c4-4e05-bfe5-4d1d822836d9" variableName="key" />
+		<os:retrieve doc:name="Retrieve" doc:id="4cec1efc-6382-4a18-8f41-000cc9134789" key="#[vars.key]" objectStore="Object_store">
+			<os:default-value ><![CDATA["this is my default value"]]></os:default-value>
+		</os:retrieve>
+	</flow>
+</mule>
