@@ -1,0 +1,18 @@
+In twentyone named, mulesoft application, we have indirectly used the various common and new modules and there related components.
+We have mainly focussed on creating the wsdl file for performing the string concatenation.
+Now, within this folder I had attched the wsdl file, create the new mule project, and add the wsdl file location in Import RAML from local file option and click finish.
+After some time, we will have the new or known one modules and components where all the configuration files are automatically done,
+but our work is to do something in transform component, in below flow named as multiConcat:\soapkit-config and after clicking on the transform message, 
+click down the arrow of multiconcat:Object on left and multiconcatresponse:Object on right, and do drag the input 1, input 2, input 3 on left fields over to output on right
+we will have the mappings done by some blue dots lines, and output payload body part will be appended as 
+          ns0#multiConcatResponse: {
+          			"output": ((payload.body.ns0#multiConcat.input1
+          default "") ++ (payload.body.ns0#multiConcat.input2 default "")) ++ (payload.body.ns0#multiConcat.input3 default "")	
+Then, click save and run the application gather the port number and the path from listener and http listener configuration for future need.
+After that, come to SOAPUI software, for having it kindly download it from web, and
+create the new SOAP application in SOAPUI software, by providing the project name as "StringManipulcationDemo" and also providing the initial WSDL location by clicking on to the browes button and clicking ok, after some seconds, click on plus sign boxes until we reach to request 1 pane.
+and,  provide the URL as "http://localhost:8081/StringMainpulation/StringMainpulationSOAP", in place of three question mark provide any string like "test1", "test2", "test3"
+and after getting console message as successfully started, then click on green button in SOAPUI software, and the result will come in side pane or box in RAW format can be viewed in XML format.
+By this we successfully implement the mule application as SOAP web service by providing wsdl, which we had created from scratch using eclipse.
+
+WSDL : Web Service Description Language
