@@ -1,0 +1,28 @@
+In twentythree named, mulesoft studio project we have used various modules and there components which are given below i.e.
+        > HTTP > Listener
+        > Salesforce > Query
+        > Core > Transform Message
+We have tried to invoke the salesforce contact data from our rest based client utility, via stuio project.
+firstly, we have started the flow, by dragging and dropping the HTTP listener onto the canvas, and updating the http connector configuration just by updating the port numner as "8081" and testing the connection and then click ok button, after that updating the path field "/twentythree".
+Now adding the salesforce module from the add modules button, and drag and drop the Query component after the listener component, and
+update the salesforce connector configuration properties as providing the username, password, security token, and autherization url by just login into the salesforce developer trial version.
+go to the given link "https://developer.salesforce.com/signup" and provide the details into the signup form and after that click onto the sign up me button.
+After that procedure write your username and password into the salesforce cnnector configuration properties, and for security token go to your salesforce developer account and click onto the view profile and then to settings and then on left side box find reset my security token and lastly, reset the security token and after some time the security token will mailed on the given mail id.
+copy the case sensitive code from there and paste into the security token field of your salesforce connector configuration in a sutdio and authorization URL will come as autopopulated, then test the connection and click ok.
+since, it is the easy task for providing the connection properties for any type of configuration, but decent wat of doing this task is given below i.e.,
+    now, right click on the studio project name and click new then click on file, give the file name as "config.properties" and write as : [Note : these details must be yours given for example and after providing, save the work]
+                sfdc.username = shankerbenugopal3999@gmail.com
+                sfdc.password = password
+                sfdc.tokennumber = OrjIScLPeK2EEoMgtaHxU4Wu
+                sfdc.loginurl = https://login.salesforce.com/services/Soap/u/56.0
+now, go to the global elements just right of the message flow, and click on create then click on global configurations then Configuratoin properties and in File field, browse the file name where sdfc details have given and saved by ownself.
+Then, click save the progress and run the studio project.
+Now, go to the salesforce login, and add new contact in contact tab by providing the fewer details just for check, whether the real time data had been invoked or not.
+After all of the above from core module drop the transform message component and update the output payload as given below i.e., 
+              %dw 2.0
+              output application/json
+              ---
+              payload
+again save the work, and wait while the studio automatically execute the changings done by the user when the project is running.
+Now, in external rest based client opt for GET option and update the URL as "http://localhost:8081/twentythree" and then hit send button.
+We will get to see that, salesforce data had been invoked properly by the client through anypoint studio, successfully.
