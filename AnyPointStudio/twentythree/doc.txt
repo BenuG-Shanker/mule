@@ -16,6 +16,7 @@ since, it is the easy task for providing the connection properties for any type 
                 sfdc.tokennumber = OrjIScLPeK2EEoMgtaHxU4Wu
                 sfdc.loginurl = https://login.salesforce.com/services/Soap/u/56.0
 now, go to the global elements just right of the message flow, and click on create then click on global configurations then Configuratoin properties and in File field, browse the file name where sdfc details have given and saved by ownself.
+Now, Query component update, the update the salesforce Query fiels as "SELECT Id, FirstName, LastName, Email, Phone FROM Contact limit 200".
 Then, click save the progress and run the studio project.
 Now, go to the salesforce login, and add new contact in contact tab by providing the fewer details just for check, whether the real time data had been invoked or not.
 After all of the above from core module drop the transform message component and update the output payload as given below i.e., 
