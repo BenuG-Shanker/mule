@@ -27,3 +27,5 @@ For to work just check, the dependency content in the pom.xml file present in tw
 save the work done, and in package folder, right click on twentyfour folder name and choose Run as option, then Run Conigurations, then a window will open and select all the three projects created named as twenty four, twentyfourorderm, twentyfourpayment, and click Run button, every time when we need to make the project run as domain config.
 Then, go to the external rest based utility software, and provide the GET option, and in URL field provide, "http://localhost:8081/twentyfourorder/" and then click send button, after that we will se the payload message set in the studio will watched in utility software, and after that, update the URL as "http://localhost:8081/twentyfourpayment" and then click send button, and we will the payload message which we have set in the studio and will appear in the utility software as well.
 After, doing the above job, we have satisfied with the work done for implementing the projects in mulesoft anypoint studion, desktop IDE seccuessfully without any error concerned.
+
+Note : https://docs.mulesoft.com/mule-runtime/4.2/shared-resources
