@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9257803f-fb30-489e-aaee-b6bbbc3e7994" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="twentysixFlow" doc:id="7fcbf5db-3a38-46c3-be7e-9518e04b3d3c" >
+		<http:listener doc:name="Listener" doc:id="15d17b5e-2b0c-4342-9a1e-dc1875745357" config-ref="HTTP_Listener_config" path="/twentysix"/>
+		<round-robin doc:name="Round Robin" doc:id="89c66ad0-83df-4ef7-83c3-6393ac02cc01" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="06078468-7e82-45b5-acc8-952931539a2a" message='""my flow of route1 logger had invoked""'/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="83ff2bd8-2107-496d-8113-d3396007f8e5" message='""my flow of route2 logger had invoked""'/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="415fc7aa-1b8c-489e-ac68-ddecad25fa6f" message='""my flow of route3 logger had invoked""'/>
+			</route>
+		</round-robin>
+	</flow>
+</mule>
