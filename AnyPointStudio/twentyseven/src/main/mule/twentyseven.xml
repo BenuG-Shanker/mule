@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="05d00ad8-8938-4b3c-984b-0295fcf32cd2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="b415fcb7-52ca-453f-9a86-eca857a3da64" basePath="/api/users/">
+		<http:request-connection host="reqres.in" protocol="HTTPS"/>
+	</http:request-config>
+	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="edfa9e9d-2524-4b0a-90da-5a6623cb59fc" keyGenerationExpression="#[attributes.queryParams.employeeID]" />
+	<flow name="twentysevenFlow" doc:id="7c14722b-ba08-427a-87b4-242524fb6739" >
+		<http:listener doc:name="Listener" doc:id="932b26ca-6b5b-4990-89b3-2eec56a13d11" path="/twentyseven" config-ref="HTTP_Listener_config" allowedMethods="GET"/>
+		<ee:cache doc:name="Cache" doc:id="da0aa537-df6d-4f31-89a5-4a1d6c8832ed" cachingStrategy-ref="Caching_Strategy">
+			<http:request method="GET" doc:name="Request" doc:id="0e31ad37-d4d5-4b85-8c14-2ba17ef5efec" config-ref="HTTP_Request_configuration" path="#[attributes.queryParams.employeeID]" />
+			<logger level="INFO" doc:name="Logger" doc:id="58b04ff9-6dd3-4e7b-8d7f-f7d711c051d9" message='""Cache MISS : my chache wrapper scope logger had invoked""'/>
+		</ee:cache>
+		<logger level="INFO" doc:name="Logger" doc:id="8e02a081-9c6b-4b67-8b61-61a45b55dfaa" message='""Cache HIT : my chache wrapper scope logger had invoked""'/>
+	</flow>
+</mule>
