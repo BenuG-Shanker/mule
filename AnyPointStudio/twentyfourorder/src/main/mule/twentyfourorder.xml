@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="twentyfourorderFlow" doc:id="26beb975-1d4d-4d45-865c-41fcf289fd05" >
+		<http:listener doc:name="Listener" doc:id="6be78c99-ebc3-4f02-91e2-534e06bb461d" config-ref="HTTP_Listener_config" path="/twentyfourorder"/>
+		<set-payload value='{"message":"twentyfour_order"}' doc:name="Set Payload" doc:id="aa8b800b-eb58-4c89-bc99-0891aec7a54d" />
+	</flow>
+</mule>
