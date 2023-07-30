@@ -1,0 +1,1 @@
+NOTE : https://docs.mulesoft.com/mule-runtime/4.3/cache-scope
