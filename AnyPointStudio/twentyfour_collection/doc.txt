@@ -1,0 +1,29 @@
+In this project, we have created three applications having two anypoint stuio normal application and other is anypoint studio domain application i.e.,
+    > application named as "twentyfourorder" > anypoint studio application
+    > application named as "twentyfourpayment" > anypoint studio application
+    > application named as "twentyfour" > anypoint studio domain application
+In this we have tried to invoke the payload in non domain application by providing sharred http connector configuration through domain project.
+first, we have created the new project, named as "twentyfourorder", and after that we have created the one more new project, named as "twentyfourpayment".
+after, createing the normal projects, we have then created our new domain project, just by opting the domain related option where we find the mule option, and named as "twentyfour".
+Now, after making three new projects, we are having the tab as twentyfourorder, twentyfourpayment, and twentyfour as "mule-domain-config".
+In mule-domain-config, we can only provide the configuration properties to the related project as per the need.
+Now, right click the project name twentyfourorder in package folder, and select properties option from there, and click on the Mule Project, and after clicking we will have our mule project window and there in domain field, opt for the mule-domain-config project name given when creating as past, in my i have chosen twentyfour from the domain field drop down label and then clicked tp Apply and Close button below.
+do the similar job with the project named as twentyfourpackage.
+We have done this because, we are getting to connect both of our new project to have the same configuration properties which will get changed or created new as per the need.
+Now, go to the mule-domain-config folder, click on Manage Modules button, and click  on green colored plus sign then select from Exchange, and in past if you have follow the work your anypoint platform id have been cretead and if not then create the anypoint platform id again and do login the id in the studio, desktop ide platform, 
+Then, in search box, type HTTP, then automatically it will search all the dependencies and jars relate to that keyword, and after searching select the HTTP Connector - Mule 4, then click on Add button, and then click on Finish and again click on Apply and Close button.
+After the aboe job, click on create button and opt the connector configuration option, then HTTP Listener and then click OK button.
+provide the port as "8081" and test the connection and then click ok button again, and save the work.
+In the normal projects, we have used commonly used core and related components, as given below i.e.,
+    > Core > Set Payload
+    > HTTP > Lstener
+After that, open any two project showing the canvas, and for making the normal application, drag and drop the http listener form the http module, and after that drop the set payload, component form the core module, and
+in the http listener componenet, we are having the same connector configuration, just have to provide the path as "/twentyfour_order", then in set payload component, provide the message in non expression mode, as "{"message":"twentyfour_order"}".
+follow the same procedure once again with the another normal studio project, and provide the path as "/twentyfourpayment" and do Save the progress.
+After that, go the your any one project name on the package folder, and search for pom.xml, and open in source mode, where delete the provided dependencies matter only present there not the tags [delete the matter present within <dependency> and </dependency> tags].
+do the same with another project, and save the work.
+We have the deleted the pom.xml dependency content from the normal application, because at run or execution time, there will version conflict and application can not be able to work properly.
+For to work just check, the dependency content in the pom.xml file present in twentyfour a mule-domain-config folder.
+save the work done, and in package folder, right click on twentyfour folder name and choose Run as option, then Run Conigurations, then a window will open and select all the three projects created named as twenty four, twentyfourorderm, twentyfourpayment, and click Run button, every time when we need to make the project run as domain config.
+Then, go to the external rest based utility software, and provide the GET option, and in URL field provide, "http://localhost:8081/twentyfourorder/" and then click send button, after that we will se the payload message set in the studio will watched in utility software, and after that, update the URL as "http://localhost:8081/twentyfourpayment" and then click send button, and we will the payload message which we have set in the studio and will appear in the utility software as well.
+After, doing the above job, we have satisfied with the work done for implementing the projects in mulesoft anypoint studion, desktop IDE seccuessfully without any error concerned.
