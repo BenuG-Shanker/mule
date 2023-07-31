@@ -1,0 +1,36 @@
+In twentyeight named, mulesoft application we have tried to implement, parse template function or method in anypoint studio, using the various modules and components which are given below i.e.,
+      > HTTP > Listener
+      > Core > Parse Template
+In this, firstly we have set the rest based endpoint, using http listener, and then parsed the html code in a parse template method, which had been invoked in rest based utility client.
+For, this project, we have drag and drop the Listener component, from the HTTP module, and updated the port number to "8081", and connection is tested then ok button is clicked, and endpoint or a path is given as "twentyeight", 
+Also, in avanced protion of the HTTP Listener, we have updated the Allowed methods to POST, and the work gets saved.
+Then, we have opt for the Parse Template component, from the Core module, and in content field, we have to write down the html code which is given below i.e.,
+      <html>
+	      <body>
+		      <table border="1">
+			      <tr>
+				      <th> Employee Name </th>
+				      <th> Employee ID </th>
+				      <th> Employee EmailID </th>
+			      </tr>
+			      <tr>
+				      <td> #[payload.empName] </td>
+				      <td> #[payload.empID] </td>
+				      <td> #[payload.empEmaiID] </td>
+			      </tr>
+		      </table>
+	      </body>
+      </html>
+At last, the whole work have to be saved and the make the project run by right clicking onto the canvas.
+Then, in rest based client, POST is selected, and the URL is updated as "http://localhost:8081/twentyeight", 
+and, go to Headers, and in empty box write the below lines of JSON type i.e.,
+        {
+          "empName":"Arul",
+          "empID":"123456",
+          "empEmailID":"benugopa@gmail.com"
+        }
+and then send button is clicked.
+We will get the result or the html payload, which is parsed in the client only, in either of the type say JWON, for getting preview of the JSON data enter click the preview button.
+By this, we got to know, that parse template is used to parse the html code, and send the payload which is in JSON, to the similar client form where the project had been invoked.
+
+Note : https://docs.mulesoft.com/mule-runtime/4.3/parse-template-reference
