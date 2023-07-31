@@ -1,1 +1,24 @@
+In twentyseven named, mulesoft anypoint application, we have implemented the concept and working of the cache block in a main flow, only for storing the payloads which are getting invoked form the rest based web service.
+We have used various modules and related componenets, which are given below i.e., 
+    > HTTP > Listener
+    > Core > Cache
+    > HTTP > Request
+    > Core > Logger
+In this we have firstly, dragged and dropped the the http listener, for making rest based web service invoked in our rest client, using the endpoint.
+In Listener, we have updated the port as "8081" in http connector configuration, and path or endpoint as "/twentyseven".
+Then the cache componenet, is dropped from the core module, and in that flow, is made up by appending Request component fomr the http module, and logger from core module.
+In Request component, we have updated the http Request connector configurations Base Path as "/api/users/", and protocol is opted as HTTPS, and Host field is updated as "reqres.in, and ok button is clicked.
+Now, in Request, Method is field, is update dby selecting the GET (Default), and Path is updated in an expression mode as "attributes.queryParams.employeeID" .
+Then Logger, component is dragged and dropped where message field, is updated as """Cache MISS : my chache wrapper scope logger had invoked""".
+After, that outide, of the cocha flow, logger component had been again dragged and dropped where, """Cache HIT : my chache wrapper scope logger had invoked""".
+And the whole work is to be saved for execution or running the mule project.
+Now, in rest client utility softawre, we have chosed GET method, and updated the URL as "http://localhost:8081/employeeID/1" or "http://localhost:8081/employeeID/2" or "http://localhost:8081/employeeID/3" or etc.
+
+Cache method, is used because, when the new payload comes, the cahce will print the logger message as miss, otherwise, the payload is old according to the cache then no miss message will appear, and clear handedly hit messgae will display, also the hit message will also get displayed every time after when the miss message get used to be displayed.
+
+getting newer data - according to cache it will miss then hit
+getting older data - according to cache it will only hit
+
+hit means no other procedure are needed to be done for invoking the older data and system resources are saved and not used up unnecessarily, if it miss then hit at that scenario related data exeution procedure must be applicable where system resources are gat to be ued up
+
 NOTE : https://docs.mulesoft.com/mule-runtime/4.3/cache-scope

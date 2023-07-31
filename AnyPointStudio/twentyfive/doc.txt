@@ -1,1 +1,20 @@
+In twentyfive named, mulesoft application we have like to try the concept of async wrapper scope or async scope, and for making the concept in working phase while executing we have used some modules and there related components which are given below i.e., 
+    > HTTP > Listener
+    > Core > Logger
+    > Core > Async
+    > HTTP > Request
+In this we have first, drag and drop the listener for having some endpoint for invoking the mule application by external rest client.
+in the listener we have updated, the port present within the http connector configuration as " 8081", and click ok button, then
+path field as "/twentyfive". And save the work.
+Now, Looger component, had been appended in to the event process part of the flow, and it's message field had updated as """flow start""", 
+Then, from core module Async component is dragged and dropped, and in Request component  from the HTTP module had been wrapped into, and some fields had changed in Request component resulting into the access of rest webservice from where the data is used to get to invoke legally.
+In Request, http Request connector configuration had to updated and there, Host field is changed to "gorest.in", and selcet the protocol as HTTPS, and then click ok button, and
+Since, the method field is GET(Default), then the path field is updated as "/public-api/users".
+Also, for showing the payload logger component had been added to the async flow, where message in expression mode had been updated as "payload". And the work is saved.
+After that our work in async had finished, and have to plant the logger again outside the async scope, and message field had changed to "flow end".
+Finally, again save the work and go to the rest client, and opt for GET method, and update the URL as "http://localhost:8081/twentyfive", and hit send button.
+After some instance, we will have the payload in client and logger messages in studio's console.
+
+Aysnc scope is used for executing any other flow, parallely, with the main flow, but within the main flow, only.
+
 Note : https://docs.mulesoft.com/mule-runtime/4.3/async-scope-reference
