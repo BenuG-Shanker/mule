@@ -1,1 +1,14 @@
+In twentysix named, mulesoft application, we have tried to implement the concept of round robin router in an anypoint studio platform, where, we have used some modules, and dropped some components there, which are given below i.e., 
+    > HTTP > Listener
+    > Core > Round Robin
+    > Core > Logger
+for getting the insight working of the round robin router, we have firstly created the rest client's endpoint by dropping and dragging the HTTP's Listener component on to the canvas, and updated the HTTP file connector configuration port as "8081", click ok before testing the connection indeed, and path or rest endpoint as "/twentysix".
+Then, we have appended the Round Robin, router, component, from the core module, and added three logger methods from the similar module, and created the three way router, which will work as a round robin router.
+In first logger, we have updated the message as """my flow of route1 logger had invoked""", and In second logger, we have updated the message as """my flow of route2 logger had invoked""", and In third logger, we have updated the message as """my flow of route3 logger had invoked""".
+it is possible that we can be able to append the logger after the logger or any other component, can be able to get appended.
+Now the implementation had been done and the work is used to get saved.
+And in rest client GET option is to be chosen, and URL is updated as "http://localhot:8081/twentysix", and then send button is hit.
+After, that on hitting the one time send button we can have that only one router is becoming active from the given three routers created using only logger, and every single time the button is clicked the router will also get changed to other, 
+this, shows that round robin router plays good role in load balancing of the payload through various routers in stressed condition.
+
 Note : https://docs.mulesoft.com/mule-runtime/4.3/round-robin
