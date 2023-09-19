@@ -1,4 +1,4 @@
-In, second named mule applicatoin, we have done some implementation regarding the debugging of the applicatoin using below modules and there functions and expressions
+In, second named mule application, we have done some implementation regarding the debugging of the applicatoin using below modules and there functions and expressions
     > Core > Logger
     > Core > Set Variable
     > Core > Flow
