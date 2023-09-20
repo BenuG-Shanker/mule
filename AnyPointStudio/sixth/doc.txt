@@ -1,12 +1,12 @@
-In, sixth named mule application, we have used below, modules nad there related functions or methods i.e., 
+In, sixth named mule application, we have used below, modules and there related functions or methods i.e., 
    > Core > Set Variable
    > Core > Transform Message
    > Core > Logger
    > HTTP > Listener
    > Web Service Consumer > Consume
-Primarily, we have added the new module called as web service consumer module, just by clicking add modules option in mule palette and selecting the web service consumer module and draging that from there to side portion and droping there, by doing this we had added the new module.
+Primarily, we have added the new module called as web service consumer module, just by clicking add modules option in mule palette and selecting the web service consumer module and draging that from there to side portion and droping over the canvas, by doing this we had added the new module.
 This module is sincerely used for helping the trigerring or invoking of any soap based web services by the help of external rest based utility software by initializing the listener as a source.
-So, after that, drag and drop the litener from the http module to the canvas and update the http configuration just by uploading the port as 8081 and then testing the connection and lastly, click successful and given the path or the end point in the listener as "/sixth".
+So, after that, drag and drop the listener from the http module to the canvas and update the http configuration just by uploading the port as 8081 and then testing the connection and lastly, click successful and given the path or the end point in the listener as "/sixth".
 And, go to the given url "https://www.soapui.org/docs/soap-and-wsdl/working-with-wsdls/" and populate the below fields as given.
 Then, in the process portion of the flow, drag and drop consume method from the web service consumer module, and update the web service consumer configuration as connector configuratoin by updating the wsdl location as "http://www.dneonline.com/calculator.asmx?wsdl", Service as "Calculator", Port as "CalculatorSoap", Address as "http://www.dneonline.com/calculator.asmx" and then click OK button.
 After that, update the general operation as "Add", only after updating the connector configuration.
